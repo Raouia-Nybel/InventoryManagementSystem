@@ -15,14 +15,14 @@ public class Admin extends User {
 
     public void login(String username, String password)
     {
-        /*boolean status=adminController.login(username, password);
+        boolean status=adminController.login(username, password);
         if(status)
         {
             System.out.println("Successful Log In");
         }else{
             System.out.println("Failed Log In");
-        }*/
-        adminController.login(username, password);
+        }
+
 
     }
 
@@ -88,6 +88,23 @@ public class Admin extends User {
     {
         adminController.deleteCategory(categoryID);
         System.out.println("Category with ID = " + categoryID + " was successfully deleted");
+    }
 
+
+    public void addInventory(Inventory inventory)
+    {
+        adminController.addInventory(inventory);
+        System.out.println("Inventory with ID = "+ inventory.getID() + " was successfully added");
+    }
+    public void deleteInventory(int inventoryID)
+    {
+        adminController.deleteInventory(inventoryID);
+        System.out.println("Inventory with ID = " + inventoryID + " was successfully deleted");
+
+    }
+    public void updateInventory(int ID, String description, int qty)
+    {
+        adminController.updateInventory(ID, description, qty);
+        System.out.println("Inventory with ID = " + ID + " was successfully updated");
     }
 }

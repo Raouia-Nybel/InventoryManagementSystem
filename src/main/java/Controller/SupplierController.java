@@ -28,6 +28,33 @@ public SupplierController(Supplier supplier)
     collection=dbConnection.database.getCollection("Suppliers");
     this.supplier =supplier;
 }
+
+    public boolean login(String username, String password)
+    {
+        query=new BasicDBObject("Username",username);
+        DBCursor cursor= collection.find(query);
+        // System.out.println(cursor.one());
+        if(cursor.one() == null)
+        {
+            return false;
+
+        }else{
+            if(username.equals((cursor.one()).get("Username"))) {
+                query = new BasicDBObject("Password", password);
+                cursor = collection.find(query);
+                if (cursor.one() == null) {
+                    return false;
+                } else {
+                    if (password.equals(cursor.one().get("Password").toString())) {
+                        return true;
+                    } else {
+                        return false;
+                    }
+                }
+            }else return false;
+        }
+    }
+
     public void addSupplier()
     {
         //dbConnection.collection=dbConnection.database.getCollection("Admins");

@@ -1,10 +1,7 @@
 import Controller.AdminController;
 import Controller.ProductController;
 import Controller.UserController;
-import Model.Admin;
-import Model.Category;
-import Model.Product;
-import Model.Supplier;
+import Model.*;
 
 public class MainSystem {
 
@@ -13,17 +10,70 @@ public class MainSystem {
     public static Supplier supplier;
     public static Product product;
     public static Category category;
+    public static Inventory inventory;
 
     public static void main(String[] args) {
        admin =new Admin();
        supplier=new Supplier();
+
+        admin.login("AdminNouha","NK0050418WRTS");
+
+        inventory=new Inventory();
+
+        inventory.setID(12);
+        inventory.setType("Smartphones");
+        inventory.setQty(200);
+        inventory.setDescription("Smartphones inventory");
+        inventory.setCategoryID(2);
+
+        admin.addInventory(inventory);
+
+
+      /*  category=new Category();
+
+        category.setName("Smartphones");
+        category.setID(2);
+
+        admin.addCategory(category);
+
        product=new Product();
-       category=new Category();
+
+        product.setID(16);
+        product.setName("Iphone 12 pro max");
+        product.setCategoryID(2);
+        product.setQty(30);
+        product.setPrice(1400);
+        product.setDescription("New Iphone from Apple (The latest)");
+
+        admin.addProduct(product);
+
+        product.setID(20);
+        product.setName("OnePlus 8 pro");
+        product.setCategoryID(2);
+        product.setQty(50);
+        product.setPrice(950);
+        product.setDescription("New OnePlus 8 pro from OnePlus");
+
+        admin.addProduct(product);
+
+        product.setID(33);
+        product.setName("Samsung galaxy note 20 ultra");
+        product.setCategoryID(2);
+        product.setQty(120);
+        product.setPrice(1200);
+        product.setDescription("New Galaxy note 20 Ultra from Samsung (The latest)");
+
+        admin.addProduct(product);*/
+
+
+
+      /* */
+
 
        //category.setID(1);
        //category.setName("Laptop");
 
-admin.login("AdminNybel","NN992110KDJJJ");
+//supplier.login("SupplierZayn","SS45HFHZK456IOEFGGHDD");
        /*product.setID(12);
        product.setName("Dell Inspiron 14 7700");
        product.setCategoryID(1);

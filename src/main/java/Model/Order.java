@@ -5,7 +5,7 @@ import java.util.Date;
 public class Order {
     private int ID;
     private int productID;
-    private int customerID;
+    private int supplierID;
     private float amount;
     private Date date;
     private String status;
@@ -29,12 +29,12 @@ public class Order {
         this.productID = productID;
     }
 
-    public int getCustomerID() {
-        return customerID;
+    public int getSupplierID() {
+        return supplierID;
     }
 
-    public void setCustomerID(int customerID) {
-        this.customerID = customerID;
+    public void setSupplierID(int supplierID) {
+        this.supplierID = supplierID;
     }
 
     public float getAmount() {

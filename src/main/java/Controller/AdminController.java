@@ -6,6 +6,8 @@ import com.mongodb.DBCollection;
 import com.mongodb.DBCursor;
 import com.mongodb.DBObject;
 
+import java.util.Objects;
+
 public class AdminController {
     public Admin admin;
     public DBConnection dbConnection;
@@ -14,6 +16,7 @@ public class AdminController {
     public SupplierController supplierController;
     public ProductController productController;
     public CategoryController categoryController;
+    public InventoryController inventoryController;
 
     public AdminController() {
         dbConnection = new DBConnection();
@@ -30,24 +33,32 @@ public class AdminController {
     }
 
 
-    public void login(String username, String password)
+    public boolean login(String username, String password)
     {
-        collection= collection.getCollection("Admins");
-        query=new BasicDBObject("Username",this.admin.getUsername());
+        query=new BasicDBObject("Username",username);
         DBCursor cursor= collection.find(query);
-        System.out.println(cursor.one());
-        /*if(username == cursor.one().get("Username").toString())
+       // System.out.println(cursor.one());
+        if(cursor.one() == null)
         {
-            query=new BasicDBObject("Password",this.admin.getPassword());
-            cursor=collection.find(query);
-            if(password == cursor.one().get("Password").toString())
-            {
-                return true;
-            }else{
-                return false;
-            }
-        }else return false;*/
-    }
+            return false;
+
+        }else{
+            if(username.equals((cursor.one()).get("Username"))) {
+                query = new BasicDBObject("Password", password);
+                cursor = collection.find(query);
+                if (cursor.one() == null) {
+                    return false;
+                } else {
+                    if (password.equals(cursor.one().get("Password").toString())) {
+                        return true;
+                    } else {
+                        return false;
+                    }
+                }
+            }else return false;
+         }
+        }
+
 
     public void addAdmin()
     {
@@ -129,6 +140,23 @@ public class AdminController {
     {
         categoryController=new CategoryController();
         categoryController.deleteCategory(categoryID);
+    }
+
+
+    public void addInventory(Inventory inventory)
+    {
+        inventoryController=new InventoryController(inventory);
+        inventoryController.addInventory();
+    }
+    public void deleteInventory(int inventoryID)
+    {
+        inventoryController=new InventoryController();
+        inventoryController.deleteInventory(inventoryID);
+    }
+    public void updateInventory(int ID, String description, int qty)
+    {
+        inventoryController=new InventoryController();
+        this.inventoryController.updateInventory(ID, description, qty);
     }
 
 
