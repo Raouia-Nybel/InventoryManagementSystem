@@ -4,6 +4,8 @@ import Controller.UserController;
 import Model.*;
 import config.Ldap;
 
+import javax.print.attribute.standard.PDLOverrideSupported;
+
 public class MainSystem {
 
 
@@ -15,9 +17,55 @@ public class MainSystem {
 
     public static void main(String[] args) {
        admin =new Admin();
-       supplier=new Supplier();
-        Ldap ldap=new Ldap();
-        ldap.newConnection();
+       admin.login("AdminNybel","NN992110KDJJJ");
+
+
+
+
+        supplier=new Supplier();
+        supplier.login("SupplierNike","SN1921HNIHLJEF");
+        Order order=new Order();
+        order.setID(1234);
+        order.setQty(30);
+        order.setAmount(3600);
+        order.setProductID(334);
+        order.setSupplierID(supplier.getID());
+        order.setDate(20210517);
+
+        order.setStatus("Unpaid");
+        supplier.addOrder(order);
+
+
+
+       /*
+        supplier.setUsername("SupplierNike");
+        supplier.setID(56);
+        supplier.setPassword("SN1921HNIHLJEF");
+        supplier.setFullName("NIKE");
+        supplier.setEmail("SupplierNIKE@NIKE.com");
+        supplier.setPhoneNumber(23456677);
+        admin.addSupplier(supplier);
+        Category category=new Category();
+        category.setID(40);
+        category.setName("Sports equipment");
+        admin.addCategory(category);
+        Product product=new Product();
+        product.setID(334);
+        product.setDescription("Running Shoes NR23");
+        product.setName("NR23");
+        product.setQty(50);
+        product.setPrice(120);
+        product.setCategoryID(40);
+        admin.addProduct(product);*/
+
+
+
+
+
+
+
+
+     //  admin.showAdmins();
 
        /* admin.login("AdminNouha","NK0050418WRTS");
         admin.showAdmins();

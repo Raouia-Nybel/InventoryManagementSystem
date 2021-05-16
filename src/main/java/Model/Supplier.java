@@ -44,5 +44,5 @@ public class Supplier extends User{
         System.out.println("Order with ID = " + ID + " was successfully updated");
     }
     public void showOrders(){}
-    public void showInventories(){}
+    public void showProducts(){}
 }

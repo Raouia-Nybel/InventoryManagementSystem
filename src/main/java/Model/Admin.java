@@ -97,7 +97,7 @@ public class Admin extends User {
         adminController.updateInventory(ID, description, qty);
         System.out.println("Inventory with ID = " + ID + " was successfully updated");
     }
-    public void showAdmins()
+   /* public void showAdmins()
     {
         adminController.showAdmins();
     }
@@ -108,7 +108,7 @@ public class Admin extends User {
     public void showProducts()
     {
         adminController.showProducts();
-    }
-    public void showOrders(){}
-    public void showInventories(){}
+    }*/
+   /* public void showOrders(){}
+    public void showInventories(){}*/
 }

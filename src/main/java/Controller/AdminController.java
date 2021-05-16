@@ -88,20 +88,20 @@ public class AdminController {
         collection.findAndModify(query, convert(this.admin));
 
     }
-    public void showAdmins()
+   /* public void showAdmins()
     {
-       query=new BasicDBObject();
-       DBCursor cursor=collection.find();
+      query=new BasicDBObject();
+       DBCursor cursor=collection.find(query);
+        System.out.println(collection.find());
 
     }
     public void showSuppliers()
     {
         collection=dbConnection.database.getCollection("Suppliers");
         query=new BasicDBObject();
-        DBCursor cursor=collection.find();
-        {
-            System.out.println(cursor.one());
-        }
+        DBCursor cursor=collection.find(query);
+        while (cursor.hasNext())
+        {System.out.println(cursor.next());}
     }
 
     public void showProducts()
@@ -112,7 +112,7 @@ public class AdminController {
         {
             System.out.println(cursor.one());
         }
-    }
+    }*/
     public void addSupplier(Supplier supplier)
     {
         supplierController=new SupplierController(supplier);
