@@ -12,7 +12,6 @@ public class Admin extends User {
         super();
         adminController=new AdminController(this);
     }
-
     public void login(String username, String password)
     {
         boolean status=adminController.login(username, password);
@@ -25,7 +24,6 @@ public class Admin extends User {
 
 
     }
-
     public void addAdmin()
     {
         adminController.addAdmin();
@@ -43,8 +41,6 @@ public class Admin extends User {
         adminController.updateAdmin(ID,username,password,email,phoneNo);
         System.out.println("Admin with ID = " + ID + " was successfully updated");
     }
-
-
     public void addSupplier(Supplier supplier)
     {
         adminController.addSupplier(supplier);
@@ -60,8 +56,6 @@ public class Admin extends User {
         adminController.updateSupplier(ID, username, password, email, phoneNo);
         System.out.println("Supplier with ID = " + ID + " was successfully updated");
     }
-
-
     public void addProduct(Product product)
     {
         adminController.addProduct(product);
@@ -77,20 +71,16 @@ public class Admin extends User {
         adminController.updateProduct(ID, name, description, price, qty);
         System.out.println("Product with ID = " + ID + " was successfully updated");
     }
-
     public void addCategory(Category category)
     {
         adminController.addCategory(category);
         System.out.println("Category with ID = " + category.getID() + " was successfully added");
     }
-
     public void deleteCategory(int categoryID)
     {
         adminController.deleteCategory(categoryID);
         System.out.println("Category with ID = " + categoryID + " was successfully deleted");
     }
-
-
     public void addInventory(Inventory inventory)
     {
         adminController.addInventory(inventory);
@@ -107,4 +97,18 @@ public class Admin extends User {
         adminController.updateInventory(ID, description, qty);
         System.out.println("Inventory with ID = " + ID + " was successfully updated");
     }
+    public void showAdmins()
+    {
+        adminController.showAdmins();
+    }
+    public void showSuppliers()
+    {
+        adminController.showSuppliers();
+    }
+    public void showProducts()
+    {
+        adminController.showProducts();
+    }
+    public void showOrders(){}
+    public void showInventories(){}
 }

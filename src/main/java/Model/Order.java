@@ -1,14 +1,14 @@
 package Model;
 
-import java.util.Date;
-
 public class Order {
     private int ID;
     private int productID;
     private int supplierID;
     private float amount;
-    private Date date;
+    private int date;
     private String status;
+    private int qty;
+
 
     public Order() {
     }
@@ -45,11 +45,11 @@ public class Order {
         this.amount = amount;
     }
 
-    public Date getDate() {
+    public int getDate() {
         return date;
     }
 
-    public void setDate(Date date) {
+    public void setDate(int date) {
         this.date = date;
     }
 
@@ -60,4 +60,12 @@ public class Order {
     public void setStatus(String status) {
         this.status = status;
     }
+    public int getQty() {
+        return qty;
+    }
+
+    public void setQty(int qty) {
+        this.qty = qty;
+    }
+
 }

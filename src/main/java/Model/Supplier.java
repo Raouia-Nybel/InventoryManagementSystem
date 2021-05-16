@@ -23,4 +23,26 @@ public class Supplier extends User{
 
 
     }
+
+    public void addOrder(Order order)
+    {
+        if(supplierController.addOrder(order)){
+            System.out.println("Order with ID = "+ order.getID() + " was successfully added");
+        }else{
+            System.out.println("Order with ID = "+ order.getID() + " was NOT successfully added");
+        }
+    }
+    public void deleteOrder(int ID)
+    {
+        supplierController.deleteOrder(ID);
+        System.out.println("Order with ID = " + ID + " was successfully deleted");
+
+    }
+    public void updateOrder(int ID, float amount, int date, String status, int qty)
+    {
+        supplierController.updateOrder(ID, amount, date, status, qty );
+        System.out.println("Order with ID = " + ID + " was successfully updated");
+    }
+    public void showOrders(){}
+    public void showInventories(){}
 }

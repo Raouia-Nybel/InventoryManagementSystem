@@ -88,12 +88,30 @@ public class AdminController {
         collection.findAndModify(query, convert(this.admin));
 
     }
-    public void showUsers()
+    public void showAdmins()
     {
-       // dbConnection.collection=dbConnection.database.getCollection("Admins");
-        DBObject query=new BasicDBObject();
-        DBCursor cursor=dbConnection.collection.find(query);
-        System.out.println(cursor.one());
+       query=new BasicDBObject();
+       DBCursor cursor=collection.find();
+
+    }
+    public void showSuppliers()
+    {
+        collection=dbConnection.database.getCollection("Suppliers");
+        query=new BasicDBObject();
+        DBCursor cursor=collection.find();
+        {
+            System.out.println(cursor.one());
+        }
+    }
+
+    public void showProducts()
+    {
+        collection=dbConnection.database.getCollection("Products");
+        query=new BasicDBObject();
+        DBCursor cursor=collection.find();
+        {
+            System.out.println(cursor.one());
+        }
     }
     public void addSupplier(Supplier supplier)
     {
@@ -157,6 +175,20 @@ public class AdminController {
     {
         inventoryController=new InventoryController();
         this.inventoryController.updateInventory(ID, description, qty);
+    }
+    public Inventory checkInventory(int productID)
+    {
+        inventoryController=new InventoryController();
+        int categoryID;
+        Inventory inventory;
+        collection=dbConnection.database.getCollection("Products");
+        inventoryController.checkInventory(productID);
+        query=new BasicDBObject("ID",productID);
+        DBCursor cursor=collection.find(query);
+        categoryID= (int) cursor.one().get("CategoryID");
+        inventory=inventoryController.checkInventory(categoryID);
+        System.out.println(inventory);
+    return inventory;
     }
 
 

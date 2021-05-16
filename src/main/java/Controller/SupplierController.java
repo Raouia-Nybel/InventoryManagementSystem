@@ -1,6 +1,7 @@
 package Controller;
 
-import Model.Admin;
+import Model.Inventory;
+import Model.Order;
 import Model.Supplier;
 import com.mongodb.BasicDBObject;
 import com.mongodb.DBCollection;
@@ -12,6 +13,7 @@ public class SupplierController {
     public DBConnection dbConnection;
     public DBCollection collection;
     public DBObject query;
+    public OrderController orderController;
 
 public SupplierController()
 {
@@ -80,6 +82,34 @@ public SupplierController(Supplier supplier)
         collection.findAndModify(query, convert(this.supplier));
 
     }
+
+    public boolean addOrder(Order order)
+    {
+        Inventory inventory;
+        AdminController adminController=new AdminController();
+        inventory=adminController.checkInventory(order.getProductID());
+        if(inventory.getQty() < order.getQty())
+        {
+            return false;
+        }else{
+            adminController.updateInventory(inventory.getID(), inventory.getDescription(),inventory.getQty()-order.getQty());
+            orderController=new OrderController(order);
+            orderController.addOrder();
+            return true;
+        }
+
+    }
+    public void deleteOrder(int ID)
+    {
+        orderController=new OrderController();
+        orderController.deleteOrder(ID);
+    }
+    public void updateOrder(int ID, float amount, int date, String status, int qty)
+    {
+        orderController=new OrderController();
+        orderController.updateOrder(ID, amount ,date ,status ,qty);
+    }
+
 
     public static DBObject convert(Supplier supplier){
         return new BasicDBObject("ID",supplier.getID()).append("Username",supplier.getUsername()).append("Password",supplier.getPassword()).append("FullName",supplier.getFullName()).append("Email",supplier.getEmail()).append("PhoneNumber",supplier.getPhoneNumber());

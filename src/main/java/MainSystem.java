@@ -2,6 +2,7 @@ import Controller.AdminController;
 import Controller.ProductController;
 import Controller.UserController;
 import Model.*;
+import config.Ldap;
 
 public class MainSystem {
 
@@ -15,18 +16,38 @@ public class MainSystem {
     public static void main(String[] args) {
        admin =new Admin();
        supplier=new Supplier();
+        Ldap ldap=new Ldap();
+        ldap.newConnection();
 
-        admin.login("AdminNouha","NK0050418WRTS");
+       /* admin.login("AdminNouha","NK0050418WRTS");
+        admin.showAdmins();
+        admin.showSuppliers();
+        admin.showProducts();
+        supplier.login("SupplierZayn","SS45HFHZK456IOEFGGHDD");*/
 
-        inventory=new Inventory();
+/*
+        Order order=new Order();
+        order.setID(1);
+        order.setSupplierID(33);
+        order.setProductID(16);
+        order.setQty(10);
+        order.setAmount(14000);
+        order.setStatus("Paid");
+        order.setDate(210515);
 
-        inventory.setID(12);
-        inventory.setType("Smartphones");
-        inventory.setQty(200);
-        inventory.setDescription("Smartphones inventory");
-        inventory.setCategoryID(2);
+        supplier.addOrder(order);*/
+
+       /* inventory=new Inventory();
+
+        inventory.setID(22);
+        inventory.setType("Laptops");
+        inventory.setQty(500);
+        inventory.setDescription("Laptops inventory");
+        inventory.setCategoryID(1);
 
         admin.addInventory(inventory);
+
+        admin.updateInventory(12, "Smartphones inventory", 350);*/
 
 
       /*  category=new Category();

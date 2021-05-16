@@ -60,6 +60,7 @@ public class ProductController {
         collection.findAndModify(query, convert(this.product));
 
     }
+
     public static DBObject convert(Product product){
         return new BasicDBObject("ID",product.getID()).append("Name",product.getName()).append("Price",product.getPrice()).append("Description",product.getDescription()).append("CategoryID",product.getCategoryID()).append("Qty",product.getQty());
     }
